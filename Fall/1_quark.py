@@ -1,6 +1,11 @@
-# First Recitation Solution
-# Makes a neutron with two down quarks and one up quarks
+"""
+Program #1 Solution
+Virginia Price
 
+Makes a neutron with two down quarks and one up quark
+Also at glowscript.org:
+https://glowscript.org/#/user/virginia.e.price/folder/contempphys/program/1quark
+"""
 # Import packages
 from vpython import *
 import numpy.random as random
