@@ -1,0 +1,249 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var restart;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, L, yceiling, g, y0, ceiling, spring, ball, k, k_val, dy, dy_val, restart, m, m_val, T_th_val, T_exp_val, dt, flag, t, T_th, P_i, P;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "13";
+    L = 3;
+    "14";
+    yceiling = 1.5;
+    "15";
+    g = vec(0, 9.8, 0);
+    "17";
+    y0 = yceiling["-"](L);
+    "20";
+    ceiling = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vec(0, yceiling, 0), length: 6, width: 4, height: .2, texture: textures.granite})]);
+    "26";
+    scene.autoscale = 0;
+    "28";
+    spring = ρσ_interpolate_kwargs.call(this, helix, [ρσ_desugar_kwargs({pos: vec(0, yceiling, 0), axis: vec(0, L["-u"](), 0), radius: .1["*"](L)})]);
+    "32";
+    ball = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(0, y0, 0), radius: .2["*"](L)})]);
+    "34";
+    ball.v = vec(0, 0, 0);
+    "35";
+    ball.eq = vec(0, y0, 0);
+    "39";
+    async function K(k) {
+        "40";
+        (await refresh());
+        "41";
+        return;
+    };
+    if (!K.__argnames__) Object.defineProperties(K, {
+        __argnames__ : {value: ["k"]},
+        __module__ : {value: null}
+    });
+
+    "42";
+    scene.append_to_caption("\n");
+    "43";
+    k = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: K, min: 1, max: 50, step: .1, value: 25, length: 100})]);
+    "44";
+    scene.append_to_caption(" Spring constant (k): ");
+    "45";
+    k_val = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: k.value})]);
+    "46";
+    scene.append_to_caption(" N/m\n\n");
+    "49";
+    async function DY(dy) {
+        "50";
+        (await refresh());
+        "51";
+        return;
+    };
+    if (!DY.__argnames__) Object.defineProperties(DY, {
+        __argnames__ : {value: ["dy"]},
+        __module__ : {value: null}
+    });
+
+    "53";
+    scene.append_to_caption("\n");
+    "54";
+    dy = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: DY, min: L["-u"](), max: L, step: .1, value: 0, length: 100})]);
+    "55";
+    scene.append_to_caption(" Initial Displacement: ");
+    "56";
+    dy_val = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: dy.value})]);
+    "57";
+    scene.append_to_caption(" m\n\n");
+    "60";
+    async function M(m) {
+        "61";
+        (await refresh());
+        "62";
+        return;
+    };
+    if (!M.__argnames__) Object.defineProperties(M, {
+        __argnames__ : {value: ["m"]},
+        __module__ : {value: null}
+    });
+
+    "65";
+    restart = true;
+    "66";
+    async function refresh() {
+        "67";
+        "68";
+        restart = true;
+        "69";
+        return;
+    };
+    if (!refresh.__module__) Object.defineProperties(refresh, {
+        __module__ : {value: null}
+    });
+
+    "71";
+    scene.append_to_caption("\n");
+    "72";
+    m = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: M, min: .1, max: 5, step: .1, value: 1, length: 100})]);
+    "73";
+    scene.append_to_caption(" Ball Mass (m): ");
+    "74";
+    m_val = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: m.value})]);
+    "75";
+    scene.append_to_caption("kg\n\n");
+    "78";
+    scene.append_to_caption("Theoretical Period (T): ");
+    "79";
+    T_th_val = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "Waiting..."})]);
+    "80";
+    scene.append_to_caption(" s^-1\n");
+    "82";
+    scene.append_to_caption("Experimental Period (T): ");
+    "83";
+    T_exp_val = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "Waiting..."})]);
+    "84";
+    scene.append_to_caption(" s^-1\n");
+    "87";
+    dt = .01;
+    "88";
+    flag = 0;
+    "90";
+    while (true) {
+        "91";
+        (await rate(1["/"](dt)));
+        "94";
+        if ((restart === true || typeof restart === "object" && ρσ_equals(restart, true))) {
+            "96";
+            k_val.text = k.value;
+            "97";
+            m_val.text = m.value;
+            "98";
+            dy_val.text = dy.value;
+            "101";
+            t = 0;
+            "102";
+            flag = 0;
+            "103";
+            ball.pos = vec(0, y0["+"](dy.value), 0);
+            "104";
+            ball.v = vec(0, 0, 0);
+            "105";
+            ball.F = vec(0, 0, 0);
+            "108";
+            T_th = 2["*"](pi)["/"](sqrt(k.value["/"](m.value)));
+            "109";
+            T_th_val.text = "{:0.3}".format(T_th);
+            "110";
+            T_exp_val.text = "Waiting...";
+            "111";
+            restart = false;
+        }
+        "115";
+        ball.F = k.value["-u"]()["*"](ball.pos["-"](ball.eq))["-"](m.value["*"](g));
+        "118";
+        ball.v = ball.v["+"](ball.F["/"](m.value)["*"](dt));
+        "119";
+        ball.pos = ball.pos["+"](ball.v["*"](dt));
+        "122";
+        spring.axis = ball.eq["+"](ball.pos);
+        "125";
+        if (ball.v.y[">"](0) && (flag === 0 || typeof flag === "object" && ρσ_equals(flag, 0))) {
+            "126";
+            flag = 1;
+            "127";
+            P_i = t;
+            "129";
+        }
+        if (ball.v.y["<"](0) && (flag === 1 || typeof flag === "object" && ρσ_equals(flag, 1))) {
+            "130";
+            P = t["-"](P_i)["*"](2);
+            "131";
+            T_exp_val.text = "{:0.3}".format(P);
+            "132";
+            flag = 2;
+        }
+        "134";
+        t = t["+"](dt);
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>

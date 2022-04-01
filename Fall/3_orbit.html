@@ -1,0 +1,161 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, AU, G, Msun, Mearth, rearth, Mjupiter, rjupiter, yr, lamp, sun, s_orbit, earth, e_orbit, jupiter, j_orbit, dt, t, r_SE, r_SJ, r_EJ, F_se, F_sj, F_ej;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "9";
+    AU = 15e10;
+    "10";
+    G = 6.67e-11;
+    "11";
+    Msun = 2e30;
+    "12";
+    Mearth = 6e24;
+    "13";
+    rearth = 1["*"](AU);
+    "14";
+    Mjupiter = 2e27;
+    "15";
+    rjupiter = 5.5["*"](AU);
+    "16";
+    yr = 315e5;
+    "19";
+    scene.range = 6["*"](AU);
+    "20";
+    scene.autoscale = 0;
+    "21";
+    lamp = ρσ_interpolate_kwargs.call(this, local_light, [ρσ_desugar_kwargs({pos: vec(0, 0, 0)})]);
+    "24";
+    sun = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(0, 0, 0), radius: .25["*"](AU), color: color.yellow, texture: "https://i.imgur.com/sWARNps.jpg"})]);
+    "28";
+    sun.m = Msun;
+    "29";
+    sun.v = vector(0, 0, 0);
+    "30";
+    s_orbit = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: color.yellow})]);
+    "33";
+    earth = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(rearth, 0, 0), radius: .075["*"](AU), texture: textures.earth})]);
+    "36";
+    earth.m = Mearth;
+    "37";
+    earth.v = vector(0, 3e4, 0);
+    "38";
+    e_orbit = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: color.blue})]);
+    "41";
+    jupiter = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(rjupiter, 0, 0), radius: .2["*"](AU), texture: "https://i.imgur.com/5FbL240.jpg"})]);
+    "44";
+    jupiter.m = Mjupiter;
+    "45";
+    jupiter.v = vector(0, 13e3, 0);
+    "46";
+    j_orbit = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: color.red})]);
+    "50";
+    dt = .005["*"](yr);
+    "51";
+    t = 0;
+    "54";
+    while (t["<"](20["*"](yr))) {
+        "55";
+        (await rate(50));
+        "56";
+        earth.pos = earth.pos["+"](dt["*"](earth.v));
+        "57";
+        e_orbit.append(earth.pos);
+        "59";
+        jupiter.pos = jupiter.pos["+"](dt["*"](jupiter.v));
+        "60";
+        j_orbit.append(jupiter.pos);
+        "62";
+        sun.pos = sun.pos["+"](dt["*"](sun.v));
+        "63";
+        s_orbit.append(sun.pos);
+        "68";
+        r_SE = sun.pos["-"](earth.pos);
+        "69";
+        r_SJ = sun.pos["-"](jupiter.pos);
+        "70";
+        r_EJ = earth.pos["-"](jupiter.pos);
+        "73";
+        F_se = G["*"](sun.m)["*"](earth.m)["*"](r_SE)["/"](pow(mag(r_SE), 3));
+        "74";
+        F_sj = G["*"](sun.m)["*"](jupiter.m)["*"](r_SJ)["/"](pow(mag(r_SJ), 3));
+        "75";
+        F_ej = G["*"](earth.m)["*"](jupiter.m)["*"](r_EJ)["/"](pow(mag(r_EJ), 3));
+        "78";
+        earth.v = earth.v["+"](F_se["/"](earth.m)["*"](dt))["-"](F_ej["/"](earth.m)["*"](dt));
+        "79";
+        jupiter.v = jupiter.v["+"](F_sj["/"](jupiter.m)["*"](dt))["+"](F_ej["/"](jupiter.m)["*"](dt));
+        "80";
+        sun.v = sun.v["+"](F_se["-u"]()["/"](sun.m)["*"](dt))["+"](F_sj["-u"]()["/"](sun.m)["*"](dt));
+        "82";
+        t = t["+"](dt);
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
