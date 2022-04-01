@@ -1,0 +1,195 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, star1, star2, star3, starList, t, tmax, dt, g1, ekin, epot, etot, K, U, rij, Fij, j, i, COM;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "17";
+    async function com(starList) {
+        var ρσ_ls, mx, m, i, com;
+        "18";
+        mx = vec(0, 0, 0);
+        "19";
+        m = 0;
+        "21";
+        var ρσ_Iter1 = range(len(starList));
+        ρσ_Iter1 = ((typeof ρσ_Iter1[Symbol.iterator] === "function") ? (ρσ_Iter1 instanceof Map ? ρσ_Iter1.keys() : ρσ_Iter1) : Object.keys(ρσ_Iter1));
+        for (var ρσ_Index1 of ρσ_Iter1) {
+            i = ρσ_Index1;
+            "22";
+            mx=mx["+"](ρσ_getitem(starList, i).m["*"](ρσ_getitem(starList, i).pos));
+            "23";
+            m=m["+"](ρσ_getitem(starList, i).m);
+        }
+        "25";
+        com = mx["/"](m);
+        "26";
+        return com;
+    };
+    if (!com.__argnames__) Object.defineProperties(com, {
+        __argnames__ : {value: ["starList"]},
+        __module__ : {value: null}
+    });
+
+    "29";
+    star1 = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(.5["-u"](), 0, 0), color: color.red, radius: .1})]);
+    "32";
+    star1.m = 1;
+    "33";
+    star1.v = vec(0, .7, 0);
+    "34";
+    star1.trail = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: star1.color})]);
+    "37";
+    star2 = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(.5, 0, 0), color: color.blue, radius: .15})]);
+    "40";
+    star2.m = 2;
+    "41";
+    star2.v = vec(0, .7["-u"](), 0);
+    "42";
+    star2.trail = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: star2.color})]);
+    "45";
+    star3 = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(10["-u"](), 0, 0), color: color.yellow, radius: .15})]);
+    "48";
+    star3.m = 1;
+    "49";
+    star3.v = vec(.5, 0, 0);
+    "50";
+    star3.trail = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: star3.color})]);
+    "53";
+    starList = ρσ_list_decorate([ star1, star2, star3 ]);
+    "57";
+    t = 0;
+    "58";
+    tmax = 20;
+    "59";
+    dt = .005;
+    "62";
+    g1 = ρσ_interpolate_kwargs.call(this, graph, [ρσ_desugar_kwargs({xmin: 0, xmax: tmax, xtitle: "time (years)", ytitle: "Energy (M<sub>sun<\/sub>•AU<sup>2</sup>/yr<sup>2</sup>)"})]);
+    "65";
+    ekin = ρσ_interpolate_kwargs.call(this, gcurve, [ρσ_desugar_kwargs({graph: g1, color: color.red, label: "Kinetic Energy"})]);
+    "66";
+    epot = ρσ_interpolate_kwargs.call(this, gcurve, [ρσ_desugar_kwargs({graph: g1, color: color.blue, label: "Potential Energy"})]);
+    "67";
+    etot = ρσ_interpolate_kwargs.call(this, gcurve, [ρσ_desugar_kwargs({graph: g1, color: color.green, label: "Total Energy"})]);
+    "69";
+    while (t["<"](tmax)) {
+        "70";
+        (await rate(1["/"](dt)));
+        "72";
+        K = 0;
+        "73";
+        U = 0;
+        "75";
+        var ρσ_Iter2 = range(len(starList));
+        ρσ_Iter2 = ((typeof ρσ_Iter2[Symbol.iterator] === "function") ? (ρσ_Iter2 instanceof Map ? ρσ_Iter2.keys() : ρσ_Iter2) : Object.keys(ρσ_Iter2));
+        for (var ρσ_Index2 of ρσ_Iter2) {
+            i = ρσ_Index2;
+            "76";
+            var ρσ_Iter3 = range(len(starList));
+            ρσ_Iter3 = ((typeof ρσ_Iter3[Symbol.iterator] === "function") ? (ρσ_Iter3 instanceof Map ? ρσ_Iter3.keys() : ρσ_Iter3) : Object.keys(ρσ_Iter3));
+            for (var ρσ_Index3 of ρσ_Iter3) {
+                j = ρσ_Index3;
+                "77";
+                if ((i !== j && (typeof i !== "object" || ρσ_not_equals(i, j)))) {
+                    "79";
+                    rij = ρσ_getitem(starList, i).pos["-"](ρσ_getitem(starList, j).pos);
+                    "82";
+                    Fij = ρσ_getitem(starList, i).m["*"](ρσ_getitem(starList, j).m)["*"](rij)["/"](pow(mag(rij), 3));
+                    "85";
+                    ρσ_getitem(starList, j).v=ρσ_getitem(starList, j).v["+"](Fij["/"](ρσ_getitem(starList, j).m)["*"](dt));
+                    "86";
+                    U=U["+"](ρσ_getitem(starList, i).m["-u"]()["*"](ρσ_getitem(starList, j).m)["/"](mag(rij)));
+                }
+            }
+        }
+        "89";
+        var ρσ_Iter4 = range(len(starList));
+        ρσ_Iter4 = ((typeof ρσ_Iter4[Symbol.iterator] === "function") ? (ρσ_Iter4 instanceof Map ? ρσ_Iter4.keys() : ρσ_Iter4) : Object.keys(ρσ_Iter4));
+        for (var ρσ_Index4 of ρσ_Iter4) {
+            i = ρσ_Index4;
+            "90";
+            ρσ_getitem(starList, i).pos=ρσ_getitem(starList, i).pos["+"](ρσ_getitem(starList, i).v["*"](dt));
+            "91";
+            ρσ_getitem(starList, i).trail.append(ρσ_getitem(starList, i).pos);
+            "92";
+            K=K["+"](.5["*"](ρσ_getitem(starList, i).m)["*"](pow(mag(ρσ_getitem(starList, i).v), 2)));
+        }
+        "94";
+        COM = (await com(starList));
+        "96";
+        ρσ_interpolate_kwargs.call(ekin, ekin.plot, [ρσ_desugar_kwargs({pos: [t, K]})]);
+        "97";
+        ρσ_interpolate_kwargs.call(epot, epot.plot, [ρσ_desugar_kwargs({pos: [t, U["/"](2)]})]);
+        "98";
+        ρσ_interpolate_kwargs.call(etot, etot.plot, [ρσ_desugar_kwargs({pos: [t, K["+"](U["/"](2))]})]);
+        "99";
+        t=t["+"](dt);
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
