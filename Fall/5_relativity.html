@@ -1,0 +1,154 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, conv_m, year, c, ly, dist, m, L, flag, F, earth, a_cen, cockpit, ringy, wing1, wing2, rocket, dt, q, gamma;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "3";
+    conv_m = 9461e12;
+    "4";
+    year = 60["*"](60)["*"](24)["*"](365.25);
+    "5";
+    c = 1;
+    "6";
+    ly = 1;
+    "7";
+    dist = 4.3;
+    "8";
+    m = 1e3;
+    "9";
+    L = .5;
+    "10";
+    flag = 0;
+    "11";
+    F = 9800["/"](conv_m)["*"](year["**"](2));
+    "16";
+    earth = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(dist["-u"]()["/"](2), 0, 0), texture: textures.earth, radius: .15["*"](ly)})]);
+    "19";
+    earth.t = 0;
+    "22";
+    a_cen = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vec(dist["/"](2), 0, 0), radius: .25["*"](ly), texture: textures.granite, color: vec(1, .8, 0), emissive: true, shininess: 0})]);
+    "34";
+    cockpit = ρσ_interpolate_kwargs.call(this, ellipsoid, [ρσ_desugar_kwargs({size: vec(.5, .5, .5)["*"](L), opacity: .6, color: color.red})]);
+    "35";
+    ringy = ρσ_interpolate_kwargs.call(this, ring, [ρσ_desugar_kwargs({axis: vector(1, 0, 0), radius: .2["*"](L), thickness: .05["*"](L)})]);
+    "36";
+    wing1 = ρσ_interpolate_kwargs.call(this, pyramid, [ρσ_desugar_kwargs({axis: vec(3, 0, 0), size: vec(1, .1, .5)["*"](L)})]);
+    "37";
+    wing2 = ρσ_interpolate_kwargs.call(this, pyramid, [ρσ_desugar_kwargs({axis: vec(1["-u"](), 0, 0), size: vec(1, .1, .5)["*"](L)})]);
+    "40";
+    rocket = ρσ_interpolate_kwargs.call(this, compound, [ρσ_list_decorate([ cockpit, ringy, wing1, wing2 ])].concat([ρσ_desugar_kwargs({pos: earth.pos["+"](vec(earth.radius, 0, 0))})]));
+    "42";
+    rocket.m = m;
+    "43";
+    rocket.F = vec(F, 0, 0);
+    "44";
+    rocket.p = vec(0, 0, 0);
+    "45";
+    rocket.v = vec(0, 0, 0);
+    "46";
+    rocket.t = 0;
+    "47";
+    dt = .001;
+    "51";
+    while (rocket.pos.x["<"](a_cen.pos.x["-"](a_cen.radius))) {
+        "52";
+        (await rate(1["/"](dt)));
+        "54";
+        rocket.p.x=rocket.p.x["+"](rocket.F.x["*"](dt));
+        "55";
+        q = rocket.p.x["/"](rocket.m);
+        "57";
+        rocket.v.x = q["/"](sqrt(1["+"](q["**"](2))));
+        "58";
+        rocket.pos.x=rocket.pos.x["+"](rocket.v.x["*"](dt));
+        "59";
+        gamma = 1["/"](sqrt(1["-"](rocket.v.x["**"](2)["/"](c["**"](2)))));
+        "62";
+        if (rocket.pos.x[">"](0) && (flag === 0 || typeof flag === "object" && ρσ_equals(flag, 0))) {
+            "63";
+            rocket.F.x = rocket.F.x["-u"]();
+            "64";
+            flag = 1;
+        }
+        "66";
+        rocket.size.x = L["/"](gamma);
+        "69";
+        rocket.t=rocket.t["+"](dt["/"](gamma));
+        "70";
+        earth.t=earth.t["+"](dt);
+    }
+    "72";
+    ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "The rocket top speed is "["+"]("{:0.3}".format(rocket.v.x))["+"]("c\n\n")})]);
+    "73";
+    ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "The trip takes "["+"]("{:0.3}".format(earth.t))["+"](" years according to Earth.\n")})]);
+    "74";
+    ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "The trip takes "["+"]("{:0.3}".format(rocket.t))["+"](" years according to the astronauts.")})]);
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
