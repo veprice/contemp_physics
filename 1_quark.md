@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Quark"
-permalink: /Fall/quark.html
+permalink: /Fall/quark
 ---
 
 ```<div id="glowscript" class="glowscript">
