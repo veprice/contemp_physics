@@ -15,8 +15,8 @@ This shows a proton with 2 up quarks and 1 down quark.
 <script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
 <script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
 <script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
-<script type="text/javascript"><!--//--><![CDATA[//><!--
-
+<script type="text/javascript"><!--//--><![CDATA[//>
+<!--
 // START JAVASCRIPT
 ;(function() {;
 var ρσ_modules = {};
@@ -129,3 +129,5 @@ if (!__main__.__module__) Object.defineProperties(__main__, {
 // END JAVASCRIPT
 //--><!]]></script>
 </div>
+
+ta-da!
