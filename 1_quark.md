@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Quark"
 permalink: /Fall/quark
 ---
