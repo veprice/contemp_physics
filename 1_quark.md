@@ -6,7 +6,7 @@ permalink: /Fall/quark
 ## Quark.py
 This shows a proton with 2 up quarks and 1 down quark.
 
-<div id="glowscript" class="glowscript" style="overflow:auto;">
+<div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
 <link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
@@ -14,8 +14,8 @@ This shows a proton with 2 up quarks and 1 down quark.
 <script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
 <script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
 <script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
-<script type="text/javascript"><!--//--><![CDATA[//>
-<!--
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
 // START JAVASCRIPT
 ;(function() {;
 var ρσ_modules = {};
@@ -70,55 +70,53 @@ async function __main__() {
     var strings = ρσ_modules.pythonize.strings;
 
     strings();
-    "6";
+    "5";
     neutron = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({opacity: .3})]);
-    "9";
+    "8";
     async function q_init() {
-        "10";
+        "9";
         return random()["-"](.5);
     };
     if (!q_init.__module__) Object.defineProperties(q_init, {
         __module__ : {value: null}
     });
 
-    "13";
+    "12";
     quarks = ρσ_list_decorate([]);
-    "15";
+    "14";
     quarks.append(ρσ_interpolate_kwargs.call(this, cone, [ρσ_desugar_kwargs({radius: .1, axis: vec(0, .2, 0), color: color.red, type: "up", pos: vec((await q_init()), (await q_init()), (await q_init())), v: vec((await q_init()), (await q_init()), (await q_init()))})]));
-    "18";
+    "17";
     quarks.append(ρσ_interpolate_kwargs.call(this, cone, [ρσ_desugar_kwargs({radius: .1, axis: vec(0, .2["-u"](), 0), color: color.green, type: "down", pos: vec((await q_init()), (await q_init()), (await q_init())), v: vec((await q_init()), (await q_init()), (await q_init()))})]));
-    "21";
+    "20";
     quarks.append(ρσ_interpolate_kwargs.call(this, cone, [ρσ_desugar_kwargs({radius: .1, axis: vec(0, .2["-u"](), 0), color: color.blue, type: "down", pos: vec((await q_init()), (await q_init()), (await q_init())), v: vec((await q_init()), (await q_init()), (await q_init()))})]));
-    "26";
+    "25";
     dt = .05;
-    "27";
+    "26";
     tmax = 10;
-    "28";
+    "27";
     t = 0;
-    "31";
+    "30";
     while (t["<"](tmax)) {
-        "32";
+        "31";
         (await rate(40));
-        "35";
+        "34";
         var ρσ_Iter1 = quarks;
         ρσ_Iter1 = ((typeof ρσ_Iter1[Symbol.iterator] === "function") ? (ρσ_Iter1 instanceof Map ? ρσ_Iter1.keys() : ρσ_Iter1) : Object.keys(ρσ_Iter1));
         for (var ρσ_Index1 of ρσ_Iter1) {
             q = ρσ_Index1;
-            "36";
+            "35";
             q.pos=q.pos["+"](q.v["*"](dt));
-            "37";
+            "36";
             vout = q.pos.dot(q.v)["/"](mag(q.pos));
-            "40";
+            "39";
             if (mag(q.pos)[">"](1["-"](q.radius)) && vout[">"](0)) {
-                "42";
+                "41";
                 q.v = q.v["-"](2["*"](vout)["*"](q.pos)["/"](mag(q.pos)));
             }
         }
-        "44";
+        "43";
         t=t["+"](dt);
     }
-    "47";
-    print("Done!");
 };
 if (!__main__.__module__) Object.defineProperties(__main__, {
     __module__ : {value: null}
@@ -126,6 +124,7 @@ if (!__main__.__module__) Object.defineProperties(__main__, {
 
 ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
 // END JAVASCRIPT
+
 //--><!]]></script>
 </div>
 
