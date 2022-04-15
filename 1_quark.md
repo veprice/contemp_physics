@@ -1,8 +1,3 @@
----
-layout: default
-title: "Quark"
-permalink: /Fall/quark
----
 
 ## Quark.py
 This shows a proton with 2 up quarks and 1 down quark!
@@ -132,4 +127,9 @@ if (!__main__.__module__) Object.defineProperties(__main__, {
 </script>
 </div>
 </div>
+<<<<<<< HEAD
 ta-da!
+=======
+
+ta-da!!
+>>>>>>> 109c91a7d5c750b05fdcce58cb991327208d0dec
