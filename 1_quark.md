@@ -1,3 +1,7 @@
+layout: page
+title: "Quark"
+permalink: /Fall/quark.html
+
 ```<div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
