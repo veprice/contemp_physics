@@ -125,7 +125,6 @@ if (!__main__.__module__) Object.defineProperties(__main__, {
 
 ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
 // END JAVASCRIPT
-
 //--><!]]></script>
 </div>
 ```
