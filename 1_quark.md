@@ -4,7 +4,7 @@ title: "Quark"
 permalink: /Fall/quark
 ---
 
-```
+
 <div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
@@ -127,4 +127,3 @@ if (!__main__.__module__) Object.defineProperties(__main__, {
 // END JAVASCRIPT
 //--><!]]></script>
 </div>
-```
