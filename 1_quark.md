@@ -7,7 +7,8 @@ permalink: /Fall/quark
 ## Quark.py
 This shows a proton with 2 up quarks and 1 down quark!
 
-<div id="glowscript" class="glowscript">
+<div style="width:100%;height:800px;overflow:hidden;">
+<div id="glowscript" class="glowscript" style="overflow:auto;">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
 <link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
@@ -127,7 +128,8 @@ if (!__main__.__module__) Object.defineProperties(__main__, {
 
 ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
 // END JAVASCRIPT
-//--><!]]></script>
+//--><!]]>
+</script>
 </div>
-
+</div>
 ta-da!
