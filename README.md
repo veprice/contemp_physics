@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+## Physics Visualizations
 
-You can use the [editor on GitHub](https://github.com/veprice/contemp_physics/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+I made these simulations as part of my duties as a teaching assistant for a Python-based physics course. Most of these started as assignments written by the professors, but I expanded on many of them to be more robust visualization tools (and also because it was a fun challenge!)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You can also explore these at [glowscript.org](https://glowscript.org/#/user/virginia.e.price/folder/contempphys/).
 
-### Markdown
+### Coding Demonstrations
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[Quark](/quark)
 
-```markdown
-Syntax highlighted code block
+### Classical Mechanics
 
-# Header 1
-## Header 2
-### Header 3
+- [Boucing Ball]()
+- [Mass-Spring System]()
+- [Solar System Orbits]()
+- [Multi-Star System]()
 
-- Bulleted
-- List
+### Special Topics
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/veprice/contemp_physics/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- [Relativistic Spaceship]()
