@@ -6,11 +6,11 @@ You can also explore these at [glowscript.org](https://glowscript.org/#/user/vir
 
 ### Coding Demonstrations
 
-- [Quark](/quark)
+- [Quark](/demos/quark)
 
 ### Classical Mechanics
 
-- [Boucing Ball]()
+- [Boucing Ball](/classica/bounce)
 - [Mass-Spring System]()
 - [Solar System Orbits]()
 - [Multi-Star System]()
