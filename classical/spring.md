@@ -1,5 +1,5 @@
 ---
-title: "Bouncing Ball"
+title: "Mass-Spring System"
 permalink: /classical/spring
 ---
 
