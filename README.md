@@ -17,4 +17,4 @@ You can also explore these at [glowscript.org](https://glowscript.org/#/user/vir
 
 ### Special Topics
 
-- [Relativistic Spaceship]()
+- [Relativistic Spaceship](special/spaceship)
