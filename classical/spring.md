@@ -2,7 +2,6 @@
 title: "Mass-Spring System"
 permalink: /classical/spring
 ---
-
 ## Mass on a Spring
 This simulation calculates the theoretical frequency of a mass on a spring, and tests it by simulating the spring-mass system and measuring the period. This program also allows the user to alter the mass, spring constant, and initial displacement of the ball.
 

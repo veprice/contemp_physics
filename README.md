@@ -12,8 +12,8 @@ You can also explore these at [glowscript.org](https://glowscript.org/#/user/vir
 
 - [Boucing Ball](classical/bounce)
 - [Mass-Spring System](classical/spring)
-- [Solar System Orbits]()
-- [Multi-Star System]()
+- [Solar System Orbits](classical/orbit)
+- [Multi-Star System](classical/stars)
 
 ### Special Topics
 
