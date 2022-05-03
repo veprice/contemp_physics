@@ -1,0 +1,242 @@
+---
+layout: page
+permalink: /classical/torque
+---
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var drag, rod, axle, done, gd, I;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, drag, done, M, Lrod, R, Laxle, I, rod, axle, gd;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "17";
+    drag = false;
+    "18";
+    done = true;
+    "21";
+    async function down() {
+        "22";
+        "24";
+        if ((done === true || typeof done === "object" && ρσ_equals(done, true))) {
+            "25";
+            rod.axis = vec(1, 0, 0);
+            "26";
+            drag = true;
+            "27";
+        } else {
+            "28";
+            print("Please wait until the current run has finished before moving the rod.");
+        }
+    };
+    if (!down.__module__) Object.defineProperties(down, {
+        __module__ : {value: null}
+    });
+
+    "31";
+    async function move() {
+        "32";
+        "33";
+        if ((drag === true || typeof drag === "object" && ρσ_equals(drag, true)) && (done === true || typeof done === "object" && ρσ_equals(done, true))) {
+            "35";
+            rod.pos = scene.mouse.pos["-"](vec(1["/"](2), 0, 0));
+            "36";
+            axle.pos = scene.mouse.pos["-"](vec(0, 0, .4["/"](2)));
+        }
+    };
+    if (!move.__module__) Object.defineProperties(move, {
+        __module__ : {value: null}
+    });
+
+    "39";
+    async function up() {
+        "40";
+        "41";
+        if ((drag === true || typeof drag === "object" && ρσ_equals(drag, true))) {
+            "42";
+            drag = false;
+            "43";
+            done = false;
+            "44";
+            (await play_sim());
+        }
+    };
+    if (!up.__module__) Object.defineProperties(up, {
+        __module__ : {value: null}
+    });
+
+    "47";
+    scene.bind("mousedown", down);
+    "48";
+    scene.bind("mousemove", move);
+    "49";
+    scene.bind("mouseup", up);
+    "52";
+    async function play_sim() {
+        var ρσ_ls, dt, t, torque, mag_omega;
+        "53";
+        "58";
+        axle.v = vec(0, 0, 0);
+        "59";
+        rod.L = vec(0, 0, 0);
+        "60";
+        rod.omega = vec(0, 0, 0);
+        "61";
+        rod.theta = 0;
+        "62";
+        rod.KE = 0;
+        "65";
+        gd.omega_v_t.data = ρσ_list_decorate([ ρσ_list_decorate([ 0, 0 ]) ]);
+        "66";
+        gd.theta_v_t.data = ρσ_list_decorate([ ρσ_list_decorate([ 0, 0 ]) ]);
+        "70";
+        dt = 1e-4;
+        "71";
+        t = 0;
+        "74";
+        while (t["<"](7)) {
+            "75";
+            (await rate(1["/"](dt)));
+            "76";
+            torque = vec(0, 0, 3["*"](cos(5["*"](t))));
+            "79";
+            axle.v=axle.v["+"](axle.F["/"](2)["*"](dt));
+            "80";
+            axle.pos=axle.pos["+"](axle.v["*"](dt));
+            "81";
+            rod.pos=rod.pos["+"](axle.v["*"](dt));
+            "84";
+            rod.L=rod.L["+"](torque["*"](dt));
+            "85";
+            rod.omega = rod.L["/"](I);
+            "86";
+            mag_omega = dot(rod.omega, norm(axle.axis));
+            "87";
+            rod.dtheta = mag_omega["*"](dt);
+            "88";
+            rod.theta=rod.theta["+"](rod.dtheta);
+            "90";
+            rod.KE = I["*"](mag_omega["**"](2))["/"](2);
+            "93";
+            ρσ_interpolate_kwargs.call(rod, rod.rotate, [ρσ_desugar_kwargs({angle: rod.dtheta, axis: axle.axis, origin: axle.pos})]);
+            "96";
+            gd.omega_v_t.plot(t, mag_omega);
+            "97";
+            gd.theta_v_t.plot(t, rod.theta);
+            "99";
+            t = t["+"](dt);
+        }
+        "101";
+        print("The final angle of the rod is: "["+"]("{:0.5}".format(rod.theta))["+"](" radians"));
+        "102";
+        print("The final angular speed is: "["+"]("{:0.5}".format(mag_omega))["+"](" radians per second"));
+        "104";
+        done = true;
+        "106";
+        return;
+    };
+    if (!play_sim.__module__) Object.defineProperties(play_sim, {
+        __module__ : {value: null}
+    });
+
+    "112";
+    M = 2;
+    "113";
+    Lrod = 1;
+    "114";
+    R = .1;
+    "115";
+    Laxle = 4["*"](R);
+    "116";
+    I = 1["/"](12)["*"](M)["*"](Lrod["**"](2))["+"](1["/"](4)["*"](M)["*"](R["**"](2)));
+    "120";
+    rod = ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: vec(1["-u"](), 0, 0), radius: R, color: color.orange, axis: vec(Lrod, 0, 0)})]);
+    "122";
+    rod.L = vec(0, 0, 0);
+    "123";
+    rod.omega = vec(0, 0, 0);
+    "124";
+    rod.theta = 0;
+    "125";
+    rod.dtheta = 0;
+    "126";
+    rod.KE = 0;
+    "129";
+    axle = ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: vec(1["-u"]()["+"](Lrod["/"](2)), 0, Laxle["-u"]()["/"](2)), radius: R["/"](6), color: color.red, axis: vec(0, 0, 4["*"](R))})]);
+    "131";
+    axle.F = vec(.1, 0, 0);
+    "132";
+    axle.v = vec(0, 0, 0);
+    "135";
+    gd = ρσ_interpolate_kwargs.call(this, graph, [ρσ_desugar_kwargs({title: "<b>Angular Properties<\/b>", xtitle: "Time (<i>t</i>)", ytitle: "", foreground: color.black, background: color.white})]);
+    "140";
+    gd.omega_v_t = ρσ_interpolate_kwargs.call(this, gcurve, [ρσ_desugar_kwargs({color: color.red, label: "Angular velocity"})]);
+    "141";
+    gd.theta_v_t = ρσ_interpolate_kwargs.call(this, gcurve, [ρσ_desugar_kwargs({color: color.blue, label: "Theta"})]);
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
